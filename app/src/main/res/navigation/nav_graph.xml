@@ -2,6 +2,128 @@
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.ynr.eshop.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/splash_to_login"
+            app:destination="@+id/loginFragment"/>
+
+        <action
+            android:id="@+id/splash_to_home"
+            app:destination="@+id/homeFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ynr.eshop.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/home_to_productDetail"
+            app:destination="@id/productDetailFragment"
+            app:popUpTo="@id/nav_graph"/>
+
+        <action
+            android:id="@+id/home_to_cart"
+            app:destination="@+id/cartFragment"/>
+
+        <action
+            android:id="@+id/home_to_profile"
+            app:destination="@+id/profileFragment"/>
+
+        <action
+            android:id="@+id/home_to_search"
+            app:destination="@id/searchFragment"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ynr.eshop.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/login_to_home"
+            app:destination="@+id/homeFragment"
+            app:popUpTo="@id/nav_graph"/>
+
+        <action
+            android:id="@+id/login_to_signup"
+            app:destination="@id/signupFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.ynr.eshop.SignupFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup">
+
+        <action
+            android:id="@+id/signup_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/nav_graph"/>
+
+        <action
+            android:id="@+id/signup_to_login"
+            app:destination="@id/loginFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.ynr.eshop.ProductDetailFragment"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product_detail">
+
+        <action
+            android:id="@+id/productDetail_to_cart"
+            app:destination="@id/cartFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.ynr.eshop.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ynr.eshop.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.ynr.eshop.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/search_to_cart"
+            app:destination="@id/cartFragment"/>
+
+        <action
+            android:id="@+id/search_to_productDetail"
+            app:destination="@id/productDetailFragment"/>
+
+    </fragment>
+
 
 </navigation>
