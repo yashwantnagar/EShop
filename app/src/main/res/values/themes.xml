@@ -13,4 +13,16 @@
         <item name="android:statusBarColor">@color/blue</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="choiceChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_state_list</item>
+        <item name="android:textColor">@color/chip_text_state_list</item>
+    </style>
+
+    <style name="roundedCornersImageView" parent="">
+        <item name="backgroundColor">@color/grey_one</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
 </resources>
