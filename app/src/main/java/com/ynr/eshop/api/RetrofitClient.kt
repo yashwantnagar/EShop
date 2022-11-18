@@ -15,9 +15,9 @@ interface RetrofitClient {
 
     companion object {
 
-        var retrofitClient: RetrofitClient? = null
+        var retrofitClient : RetrofitClient? = null
 
-        fun getInstance() : RetrofitClient {
+          fun getInstance() : RetrofitClient {
 
             if (retrofitClient == null) {
 
@@ -25,6 +25,7 @@ interface RetrofitClient {
                     .baseUrl(AppResources.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
+
                 retrofitClient = retrofit.create(RetrofitClient::class.java)
 
             }

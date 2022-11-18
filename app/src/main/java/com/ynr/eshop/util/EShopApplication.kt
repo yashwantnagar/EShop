@@ -1,13 +1,14 @@
 package com.ynr.eshop.util
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
 
-class MyApplication : Application() {
+class EShopApplication : Application() {
+
 
     override fun onCreate() {
         super.onCreate()
+
+//        initialize(application = Application())
 
 //        mInstance = this
 
@@ -18,6 +19,7 @@ class MyApplication : Application() {
         //TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Roboto-BlackItalic.ttf");
 
     }
+
 
 //    companion object {
 //

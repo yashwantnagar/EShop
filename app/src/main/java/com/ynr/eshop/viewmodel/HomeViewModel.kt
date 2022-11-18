@@ -35,7 +35,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 response.enqueue(object : Callback<List<AllProduct>> {
 
                     override fun onResponse(call: Call<List<AllProduct>>,
-                                            response: Response<List<AllProduct>>) {
+                                            response: Response<List<AllProduct>>
+                    ) {
 
                         allProductList.postValue(response.body())
 
@@ -62,10 +63,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 Log.e(TAG, "Exception: ${e.message}" )
 
             }
-
-
         }
-
     }
-
 }
