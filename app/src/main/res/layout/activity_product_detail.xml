@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    tools:context=".ui.ProductDetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/backBtn"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/ic_back"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/cartBtn"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintTop_toBottomOf="@+id/backBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/product_image"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_android"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="USD 350"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/product_image"
+                app:layout_constraintTop_toBottomOf="@+id/product_image" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/product_detail_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/product_price"
+                app:layout_constraintEnd_toEndOf="@+id/product_image"
+                app:layout_constraintTop_toTopOf="@+id/product_price"
+                app:srcCompat="@drawable/ic_favorite"
+                app:tint="@color/blue" />
+
+            <TextView
+                android:id="@+id/product_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="TMA-2 HD WIRELESS"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/product_price"
+                app:layout_constraintTop_toBottomOf="@+id/product_price" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/rateImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/product_rating"
+                app:layout_constraintStart_toStartOf="@+id/product_title"
+                app:layout_constraintTop_toBottomOf="@+id/product_title"
+                app:srcCompat="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/product_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="4.8"
+                android:padding="2dp"
+                android:textColor="@color/grey_one"
+                app:layout_constraintStart_toEndOf="@+id/rateImg"
+                app:layout_constraintTop_toBottomOf="@+id/product_title" />
+
+            <TextView
+                android:id="@+id/product_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="234 Reviews"
+                android:padding="2dp"
+                android:textColor="@color/grey_one"
+                app:layout_constraintBottom_toBottomOf="@+id/product_rating"
+                app:layout_constraintStart_toEndOf="@+id/product_rating"
+                app:layout_constraintTop_toTopOf="@+id/product_rating" />
+
+
+            <TextView
+                android:id="@+id/product_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:lineSpacingExtra="1dp"
+                android:lineSpacingMultiplier="1.1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="65dp"
+                android:fontFamily="@font/open_sans"
+                android:text="The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers. \n\nThe speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers. "
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/product_title"
+                app:layout_constraintStart_toStartOf="@+id/rateImg"
+                app:layout_constraintTop_toBottomOf="@+id/product_rating" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:background="@drawable/button"
+        android:id="@+id/add_to_cart_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:text="Add to Cart"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/open_sans_bold"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
