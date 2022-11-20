@@ -2,6 +2,7 @@ package com.ynr.eshop.model
 
 import com.google.gson.annotations.SerializedName
 
+
 data class AllProduct (
 
     @SerializedName("id")
