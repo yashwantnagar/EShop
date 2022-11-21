@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="5dp"
+    android:id="@+id/card_item"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/product_image"
+            android:src="@drawable/shirt"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="95dp"
+            android:layout_height="95dp"/>
+
+        <TextView
+            android:id="@+id/product_title"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:padding="3dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
+            android:text="Mens Casual Premium Slim Fit T-Shirt"
+            app:layout_constraintStart_toEndOf="@+id/product_image"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:padding="3dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
+            android:text="100 USD"
+            app:layout_constraintStart_toEndOf="@+id/product_image"
+            app:layout_constraintTop_toBottomOf="@+id/product_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/product_price"
+            app:layout_constraintStart_toEndOf="@id/product_image"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/removeBtn"
+                android:padding="2dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_remove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/product_quantity"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="3"
+                android:padding="3dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/addBtn"
+                android:padding="2dp"
+                android:src="@drawable/ic_add"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/deleteBtn"
+            android:padding="2dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/product_price"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_item"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/item_image"
+            style="@style/roundedCornersImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/shirt"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"/>
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:text="Men's T'shirt slim fit size"
+            android:padding="3dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/item_price"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="3dp"
+            android:text="100 USD"
+            android:padding="3dp"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/item_title"
+            app:layout_constraintStart_toEndOf="@id/item_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/item_price"
+            app:layout_constraintStart_toEndOf="@id/item_image"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/star"
+                android:padding="2dp"
+                android:src="@drawable/ic_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/item_rating"
+                android:layout_marginStart="3dp"
+                android:text="4.1"
+                android:padding="3dp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/item_review"
+                android:layout_marginStart="12dp"
+                android:text="100 Review"
+                android:padding="3dp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
