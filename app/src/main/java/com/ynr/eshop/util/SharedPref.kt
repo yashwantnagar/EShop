@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import java.lang.RuntimeException
 
 class SharedPref(context: Context) {
+
     private val sharedPreferences: SharedPreferences
     private val editor: SharedPreferences.Editor
 
@@ -14,6 +15,17 @@ class SharedPref(context: Context) {
         sharedPreferences = context.getSharedPreferences(prefsFile, Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()
         editor.apply()
+    }
+
+    companion object {
+        var prefsHelper: SharedPref? = null
+            private set
+
+        fun init(context: Context) {
+            if (prefsHelper == null) {
+                SharedPref(context)
+            }
+        }
     }
 
      fun delete(key: String?) {
@@ -55,14 +67,5 @@ class SharedPref(context: Context) {
         return sharedPreferences.contains(key)
     }
 
-    companion object {
-        var prefsHelper: SharedPref? = null
-            private set
 
-        fun init(context: Context) {
-            if (prefsHelper == null) {
-                SharedPref(context)
-            }
-        }
-    }
 }

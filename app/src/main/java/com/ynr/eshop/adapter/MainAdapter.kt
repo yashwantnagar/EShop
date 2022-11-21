@@ -3,6 +3,8 @@ package com.ynr.eshop.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,11 +46,12 @@ class MainAdapter(contexts : Context) : RecyclerView.Adapter<MainAdapter.ViewHol
         Glide.with(holder.itemView).load(allProduct.image).into(holder.product_image)
 
         holder.product_title.text = allProduct.title
-        holder.product_price.text = allProduct.price.toString()
+        holder.product_price.text = allProduct.price.toString() + " USD "
         holder.rating.text = allProduct.rating?.rate.toString()
         holder.review.text = allProduct.rating?.count.toString() + " Reviews"
 
         holder.itemView.setOnClickListener(View.OnClickListener {
+
 
             val intent = Intent(context,ProductDetailActivity::class.java)
             intent.putExtra("id",allProduct.id)

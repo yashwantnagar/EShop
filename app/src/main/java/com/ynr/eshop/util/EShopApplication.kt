@@ -8,6 +8,8 @@ class EShopApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        SharedPref.init(this)
+
 //        initialize(application = Application())
 
 //        mInstance = this

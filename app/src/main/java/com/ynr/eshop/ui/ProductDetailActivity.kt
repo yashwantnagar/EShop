@@ -3,11 +3,14 @@ package com.ynr.eshop.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.ynr.eshop.R
+import com.ynr.eshop.model.AllProduct
 
 class ProductDetailActivity : AppCompatActivity() {
 
@@ -29,25 +32,6 @@ class ProductDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
 
-
-      /*  val bundle : Bundle? = intent.extras
-
-        bundle?.let {
-
-            bundle.apply {
-
-                //Serializable Data
-                val blog = getSerializable("blogData") as Blog?
-                if (blog != null) {
-                    textView.text = "Blog name is ${blog?.name}. Year started: ${blog?.year}"
-
-                }
-
-            }
-
-        }*/
-
-
         backBtn = findViewById(R.id.backBtn)
         cartBtn = findViewById(R.id.cartBtn)
 
@@ -61,25 +45,29 @@ class ProductDetailActivity : AppCompatActivity() {
         addToCartBtn = findViewById(R.id.add_to_cart_btn)
 
 
-
         val id = intent.getIntExtra("id",0)
-        val price = intent.getIntExtra("price",0)
+        val price = intent.getDoubleExtra("price",0.0)
         val title = intent.getStringExtra("title").toString()
         val image = intent.getStringExtra("image").toString()
         val category = intent.getStringExtra("category").toString()
         val description = intent.getStringExtra("description").toString()
-        val rate = intent.getIntExtra("rate",0)
+        val rate = intent.getDoubleExtra("rate",0.0)
         val count = intent.getIntExtra("count",0)
 
-        Log.e(TAG, "ProductDetailActivity: $price -- $count -- $rate " )
+        Log.e(TAG, "ProductDetailActivity: $id -- $price -- $count -- $rate " )
 
         Glide.with(this).load(image).into(productImg)
 
         productTitle.text = title
-        productPrice.text = price.toString()
+        productPrice.text = "$price USD "
         productDescription.text = description
         productRating.text = rate.toString()
-        productReviews.text = count.toString() + " Reviews"
+        productReviews.text = "$count Reviews"
+
+        backBtn.setOnClickListener(View.OnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        })
+
 
     }
 
