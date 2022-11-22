@@ -46,9 +46,11 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         val searchItem : AppCompatImageView = findViewById(R.id.home_search)
         val cartItem : AppCompatImageView = findViewById(R.id.home_cart)
+        val profileImage : AppCompatImageView = findViewById(R.id.profileImage)
 
         searchItem.setOnClickListener(this)
         cartItem.setOnClickListener(this)
+        profileImage.setOnClickListener(this)
 
         itemRecyclerView = findViewById(R.id.home_recycler_view)
         progressBar = findViewById(R.id.progressBar)
@@ -106,6 +108,11 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
             R.id.home_cart -> {
                 val intent = Intent(this,CartActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.profileImage -> {
+                val intent = Intent(this,ProfileActivity::class.java)
                 startActivity(intent)
             }
         }

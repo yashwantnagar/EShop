@@ -31,7 +31,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
         val itemCard : MaterialCardView = itemView.findViewById(R.id.card_item)
         val itemImage : ShapeableImageView = itemView.findViewById(R.id.item_image)
