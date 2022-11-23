@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.navigation.fragment.findNavController
 import com.ynr.eshop.R
-import com.ynr.eshop.ui.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 

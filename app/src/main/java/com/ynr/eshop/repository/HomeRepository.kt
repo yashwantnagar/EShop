@@ -4,9 +4,10 @@ import com.ynr.eshop.api.RetrofitClient
 
 class HomeRepository (private val retrofitClient : RetrofitClient) {
 
-    suspend fun getAllProduct() = retrofitClient.getAllProducts()
+    suspend fun getAllProduct() = retrofitClient.getAllProduct()
 
 }
+
 
 /*
 class HomeRepository(private val apiInterface: ApiInterface, applicationContext : Application) {

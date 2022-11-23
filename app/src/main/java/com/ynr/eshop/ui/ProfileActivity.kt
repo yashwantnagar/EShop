@@ -51,6 +51,10 @@ class ProfileActivity : AppCompatActivity(), OnClickListener {
 
     private fun logOutDialog() {
 
+//        MaterialAlertDialogBuilder(this,R.style.RoundShapeTheme)
+//            .setView(R.layout.activity_profile)
+//            .show()
+
         MaterialAlertDialogBuilder(this,R.style.RoundShapeTheme)
             .setTitle("LogOut")
             .setMessage("Are you sure you want to LogOut?")
@@ -64,6 +68,7 @@ class ProfileActivity : AppCompatActivity(), OnClickListener {
                 dialogInterface.dismiss()
 
             })
+            .show()
 
     }
 

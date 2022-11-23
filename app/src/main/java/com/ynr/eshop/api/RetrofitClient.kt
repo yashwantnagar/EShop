@@ -2,7 +2,6 @@ package com.ynr.eshop.api
 
 import com.ynr.eshop.model.AllProduct
 import com.ynr.eshop.util.AppResources
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,8 +9,9 @@ import retrofit2.http.GET
 
 interface RetrofitClient {
 
+
     @GET(AppResources.ALL_PRODUCT)
-    fun getAllProducts() : Call<List<AllProduct>>
+    suspend fun getAllProduct() : Response<List<AllProduct>>
 
     companion object {
 

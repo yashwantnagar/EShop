@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -21,16 +22,12 @@ import com.ynr.eshop.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity(), OnClickListener {
 
-//    lateinit var activityMainBinding : ActivityMainBinding
-//    lateinit var navController: NavController
 
     lateinit var itemRecyclerView : RecyclerView
     lateinit var progressBar : ProgressBar
 
-
     private val TAG = "MainActivity"
 
-    //    private lateinit var binding : FragmentHomeBinding
     lateinit var homeViewModel : HomeViewModel
     private val retrofitClient = RetrofitClient.getInstance()
 
@@ -40,17 +37,13 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-//        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-//        NavigationUI.setupActionBarWithNavController(this, navController)
-
         val searchItem : AppCompatImageView = findViewById(R.id.home_search)
         val cartItem : AppCompatImageView = findViewById(R.id.home_cart)
         val profileImage : AppCompatImageView = findViewById(R.id.profileImage)
 
         searchItem.setOnClickListener(this)
         cartItem.setOnClickListener(this)
-        profileImage.setOnClickListener(this)
+//        profileImage.setOnClickListener(this)
 
         itemRecyclerView = findViewById(R.id.home_recycler_view)
         progressBar = findViewById(R.id.progressBar)
@@ -64,9 +57,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         ).get(HomeViewModel::class.java)
 
 
-//        binding.recyclerview.adapter = adapter
-
-        homeViewModel.allProductList.observe(this, Observer {
+        homeViewModel.productLiveData.observe(this, Observer {
 
             Log.e(TAG, "onViewCreated: $it")
 
@@ -80,11 +71,12 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         homeViewModel.errorMessage.observe(this, Observer {
 
+            Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
             Log.e(TAG, "onViewCreated: $it")
 
         })
 
-        homeViewModel.loadingProgressBar.observe(this, Observer{
+        homeViewModel.loading.observe(this, Observer{
 
             if (it) {
                 progressBar.visibility = View.VISIBLE
@@ -94,6 +86,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         })
 
+        homeViewModel.productLiveData
 
     }
 

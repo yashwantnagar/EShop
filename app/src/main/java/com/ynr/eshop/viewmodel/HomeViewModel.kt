@@ -1,68 +1,62 @@
 package com.ynr.eshop.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.ynr.eshop.model.AllProduct
 import com.ynr.eshop.repository.HomeRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.*
 
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
-    val allProductList = MutableLiveData<List<AllProduct>>()
-    val errorMessage = MutableLiveData<String>()
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage get() = _errorMessage
 
-    val loadingProgressBar = MutableLiveData<Boolean>()
+    private val _loading = MutableLiveData<Boolean>()
+    val loading get() = _loading
 
-    private val TAG = "HomeViewModel"
+    private val _productLiveData = MutableLiveData<List<AllProduct>>()
+    val productLiveData get() = _productLiveData
+
+    private var job : Job? = null
 
     init {
         getAllProduct()
     }
 
+
     private fun getAllProduct() {
 
-        viewModelScope.launch(Dispatchers.IO) {
+        job = CoroutineScope(Dispatchers.IO).launch {
 
-            try {
+            val response = homeRepository.getAllProduct()
 
-                val response = homeRepository.getAllProduct()
-                response.enqueue(object : Callback<List<AllProduct>> {
+            withContext(Dispatchers.Main) {
 
-                    override fun onResponse(call: Call<List<AllProduct>>,
-                                            response: Response<List<AllProduct>>
-                    ) {
+                if (response.isSuccessful) {
 
-                        allProductList.postValue(response.body())
+                    productLiveData.postValue(response.body())
+                    loading.value = false
 
-                        loadingProgressBar.value = false
+                } else {
 
-//                        Log.e(TAG, "onResponse: ${response.body()}" )
+                    onError("Error : ${response.message()} ")
 
-                    }
-
-                    override fun onFailure(call: Call<List<AllProduct>>, t: Throwable) {
-
-                        errorMessage.postValue(t.message)
-
-                        loadingProgressBar.value = false
-
-//                        Log.e(TAG, "onFailure: ${t.message}" )
-
-                    }
-
-                })
-
-            } catch (e : Exception){
-
-                Log.e(TAG, "Exception: ${e.message}" )
+                }
 
             }
+
         }
+
     }
+
+    private fun onError(message: String) {
+        errorMessage.value = message
+        loading.value = false
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        job?.cancel()
+    }
+
 }
