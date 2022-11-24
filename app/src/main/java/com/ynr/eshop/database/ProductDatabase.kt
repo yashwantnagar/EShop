@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(entities = [Product::class], version = 1, exportSchema = false)
 abstract class ProductDatabase : RoomDatabase() {
 
-    abstract fun getsProductDao() : ProductDao
+    abstract fun getProductDao() : ProductDao
 
     companion object{
 
@@ -31,5 +31,30 @@ abstract class ProductDatabase : RoomDatabase() {
         }
 
     }
+
+
+    /*abstract fun messageDao(): MessageDao
+
+    companion object {
+
+        @Volatile
+        private var INSTANCE: MessageDatabase? = null
+
+        fun getDatabase(context: Context): MessageDatabase? {
+            if (INSTANCE == null) {
+                synchronized(MessageDatabase::class.java) {
+                    if (INSTANCE == null) {
+                        INSTANCE = Room.databaseBuilder(
+                            context.applicationContext,
+                            MessageDatabase::class.java, "message_database"
+                        )
+                            .build()
+                    }
+                }
+            }
+            return INSTANCE
+        }
+    }*/
+
 
 }

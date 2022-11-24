@@ -68,6 +68,11 @@ class ProductDetailActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         })
 
+        addToCartBtn.setOnClickListener(View.OnClickListener {
+
+            addToCartBtn.text = "Go To Cart"
+
+        })
 
     }
 
