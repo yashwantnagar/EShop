@@ -33,5 +33,5 @@ data class Product(
 
 ){
     @PrimaryKey(autoGenerate = true)
-    val id : Int = 0
+    var id : Int = 0
 }

@@ -22,7 +22,7 @@ class MainAdapter(contexts : Context) : RecyclerView.Adapter<MainAdapter.ViewHol
     val context = contexts
 
 
-    fun setProducts(allProduct: List<AllProduct>) {
+    fun setProducts(allProduct : List<AllProduct>) {
 
         this.allProducts = allProduct.toMutableList()
         notifyDataSetChanged()

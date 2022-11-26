@@ -1,18 +1,29 @@
 package com.ynr.eshop.adapter
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
-import com.google.android.material.imageview.ShapeableImageView
 import com.ynr.eshop.R
+import com.ynr.eshop.database.Product
 
 
-class CartAdapter : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
+class CartAdapter(context : Context, product : List<Product>)
+    : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
+
+    val product = product
+    val context = context
+
+    fun setProduct(context : Context, product : List<Product>) {
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -22,24 +33,34 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        val product = product[position]
+
+        Glide.with(holder.itemView).load(product.image).into(holder.productImage)
+
+        holder.productTitle.text = product.title
+        holder.productPrice.text = product.price.toString() + " USD "
+        holder.productQuantity.text = "1"
 
 
     }
 
     override fun getItemCount(): Int {
 
-        return 5
+        return product.size
 
     }
 
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val itemCard : MaterialCardView = itemView.findViewById(R.id.card_item)
+        val productCard : MaterialCardView = itemView.findViewById(R.id.card_item)
         val productImage : AppCompatImageView = itemView.findViewById(R.id.product_image)
-        val itemTitle : TextView = itemView.findViewById(R.id.product_title)
-        val itemPrice : TextView = itemView.findViewById(R.id.product_price)
-        val itemRating : TextView = itemView.findViewById(R.id.product_quantity)
+        val productTitle : TextView = itemView.findViewById(R.id.product_title)
+        val productPrice : TextView = itemView.findViewById(R.id.product_price)
+        val productQuantity : TextView = itemView.findViewById(R.id.product_quantity)
         val removeBtn : AppCompatImageView = itemView.findViewById(R.id.removeBtn)
         val addBtn : AppCompatImageView = itemView.findViewById(R.id.addBtn)
         val deleteBtn : AppCompatImageView = itemView.findViewById(R.id.deleteBtn)

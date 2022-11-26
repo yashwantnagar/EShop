@@ -1,6 +1,7 @@
 package com.ynr.eshop.util
 
 import android.app.Application
+import com.ynr.eshop.database.ProductDatabase
 
 class EShopApplication : Application() {
 
@@ -10,7 +11,7 @@ class EShopApplication : Application() {
 
         SharedPref.init(this)
 
-//        initialize(application = Application())
+        initialize()
 
 //        mInstance = this
 
@@ -19,6 +20,12 @@ class EShopApplication : Application() {
 
         //this code for font.
         //TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Roboto-BlackItalic.ttf");
+
+    }
+
+    private fun initialize() {
+
+        val database = ProductDatabase.getDatabase(this)
 
     }
 

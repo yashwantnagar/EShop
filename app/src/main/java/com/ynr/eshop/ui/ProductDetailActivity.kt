@@ -7,10 +7,13 @@ import android.view.View
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.ynr.eshop.R
+import com.ynr.eshop.database.Product
 import com.ynr.eshop.model.AllProduct
+import com.ynr.eshop.viewmodel.CartViewModel
 
 class ProductDetailActivity : AppCompatActivity() {
 
@@ -27,6 +30,8 @@ class ProductDetailActivity : AppCompatActivity() {
     lateinit var productReviews : TextView
     lateinit var productDescription : TextView
     lateinit var addToCartBtn : MaterialButton
+
+    private lateinit var cartViewModel : CartViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,9 +73,17 @@ class ProductDetailActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         })
 
+
+        cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
+
+
         addToCartBtn.setOnClickListener(View.OnClickListener {
 
-            addToCartBtn.text = "Go To Cart"
+            cartViewModel.insertProduct(Product(
+                id,title,price,description,category,image,rate,count
+            ))
+
+            addToCartBtn.setText(R.string.go_to_cart)
 
         })
 
