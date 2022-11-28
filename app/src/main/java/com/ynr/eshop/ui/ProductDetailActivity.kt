@@ -1,12 +1,15 @@
 package com.ynr.eshop.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
@@ -50,7 +53,7 @@ class ProductDetailActivity : AppCompatActivity() {
         addToCartBtn = findViewById(R.id.add_to_cart_btn)
 
 
-        val id = intent.getIntExtra("id",0)
+        val product_id = intent.getIntExtra("id",0)
         val price = intent.getDoubleExtra("price",0.0)
         val title = intent.getStringExtra("title").toString()
         val image = intent.getStringExtra("image").toString()
@@ -59,7 +62,7 @@ class ProductDetailActivity : AppCompatActivity() {
         val rate = intent.getDoubleExtra("rate",0.0)
         val count = intent.getIntExtra("count",0)
 
-        Log.e(TAG, "ProductDetailActivity: $id -- $price -- $count -- $rate " )
+        Log.e(TAG, "ProductDetailActivity: $product_id -- $price -- $count -- $rate " )
 
         Glide.with(this).load(image).into(productImg)
 
@@ -77,14 +80,48 @@ class ProductDetailActivity : AppCompatActivity() {
         cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
 
 
+        cartViewModel.allProduct.observe(this, Observer {
+            Log.e(TAG, "onCreate: ${it.size} --- $it" )
+
+            for (its in it){
+                if(its.product_id == product_id){
+
+                    Log.e(TAG, "onCreate: GO TO CART ${its.product_id} " )
+                    addToCartBtn.setText(R.string.go_to_cart)
+
+
+                } /*else {
+
+                    cartViewModel.insertProduct(Product(
+                        product_id,title,price,description,category,image,rate,count
+                    ))
+
+                    addToCartBtn.setText(R.string.go_to_cart)
+                    Log.e(TAG, "onCreate: NOT CART ${its.product_id}" )
+                }*/
+            }
+
+        })
+
+
         addToCartBtn.setOnClickListener(View.OnClickListener {
 
+            if(addToCartBtn.text == "Go to Cart"){
+                Toast.makeText(this, "Product already available in the Cart",
+                    Toast.LENGTH_SHORT).show()
 
-            cartViewModel.insertProduct(Product(
-                id,title,price,description,category,image,rate,count
-            ))
+                val intent = Intent(this,CartActivity::class.java)
+                startActivity(intent)
 
-            addToCartBtn.setText(R.string.go_to_cart)
+
+            } else {
+
+                cartViewModel.insertProduct(Product(
+                    product_id,title,price,description,category,image,rate,count
+                ))
+
+                addToCartBtn.setText(R.string.go_to_cart)
+            }
 
         })
 

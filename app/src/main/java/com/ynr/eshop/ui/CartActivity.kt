@@ -14,7 +14,7 @@ import com.ynr.eshop.database.Product
 import com.ynr.eshop.util.OnClickItem
 import com.ynr.eshop.viewmodel.CartViewModel
 
-class CartActivity : AppCompatActivity(),OnClickItem {
+class CartActivity : AppCompatActivity() {
 
     private lateinit var cartRV : RecyclerView
     lateinit var cartAdapter : CartAdapter
@@ -40,12 +40,12 @@ class CartActivity : AppCompatActivity(),OnClickItem {
         cartViewModel = ViewModelProvider(this)[CartViewModel::class.java]
 
 
-        cartViewModel.getAllProduct().observe(this, Observer {
+        cartViewModel.allProduct.observe(this, Observer {
             Log.e(TAG, "onCreate: ${it.size} --- $it" )
 
             if(it.isNotEmpty()){
 
-                cartAdapter = CartAdapter(this,it,this)
+                cartAdapter = CartAdapter(this,it,cartViewModel)
                 cartRV.adapter = cartAdapter
 
             }
@@ -60,10 +60,5 @@ class CartActivity : AppCompatActivity(),OnClickItem {
 
     }
 
-    override fun onClick(product: Product) {
-
-        Log.e(TAG, "onClick:  ${product.price} --- ${product.id} ")
-
-    }
 
 }

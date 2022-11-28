@@ -2,6 +2,7 @@ package com.ynr.eshop.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +14,12 @@ import com.google.android.material.card.MaterialCardView
 import com.ynr.eshop.R
 import com.ynr.eshop.database.Product
 import com.ynr.eshop.util.OnClickItem
+import com.ynr.eshop.viewmodel.CartViewModel
 
 class CartAdapter(
-    private val context: Context,
-    private val product: List<Product>,
-    private val onClickItem: OnClickItem
+    private val context : Context,
+    private val product : List<Product>,
+    private val cartViewModel : CartViewModel
 )
     : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
@@ -42,7 +44,17 @@ class CartAdapter(
 
         holder.productCard.setOnClickListener(View.OnClickListener {
 
-            onClickItem.onClick(product)
+
+        })
+
+
+        holder.deleteBtn.setOnClickListener(View.OnClickListener {
+
+            cartViewModel.deleteProduct(product)
+            notifyDataSetChanged()
+            notifyItemChanged(position)
+
+            Log.e("TAG", "onBindViewHolder: ${product.id} is Deleted" )
 
         })
 
