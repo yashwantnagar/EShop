@@ -12,18 +12,14 @@ import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 import com.ynr.eshop.R
 import com.ynr.eshop.database.Product
+import com.ynr.eshop.util.OnClickItem
 
-
-class CartAdapter(context : Context, product : List<Product>)
+class CartAdapter(
+    private val context: Context,
+    private val product: List<Product>,
+    private val onClickItem: OnClickItem
+)
     : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
-
-
-    val product = product
-    val context = context
-
-    fun setProduct(context : Context, product : List<Product>) {
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -44,8 +40,15 @@ class CartAdapter(context : Context, product : List<Product>)
         holder.productPrice.text = product.price.toString() + " USD "
         holder.productQuantity.text = "1"
 
+        holder.productCard.setOnClickListener(View.OnClickListener {
+
+            onClickItem.onClick(product)
+
+        })
+
 
     }
+
 
     override fun getItemCount(): Int {
 

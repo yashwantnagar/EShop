@@ -3,8 +3,6 @@ package com.ynr.eshop.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,18 +14,8 @@ import com.ynr.eshop.R
 import com.ynr.eshop.model.AllProduct
 import com.ynr.eshop.ui.ProductDetailActivity
 
-class MainAdapter(contexts : Context) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
-
-    var allProducts = mutableListOf<AllProduct>()
-    val context = contexts
-
-
-    fun setProducts(allProduct : List<AllProduct>) {
-
-        this.allProducts = allProduct.toMutableList()
-        notifyDataSetChanged()
-
-    }
+class MainAdapter(private val context: Context, private val allProducts : List<AllProduct>)
+    : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

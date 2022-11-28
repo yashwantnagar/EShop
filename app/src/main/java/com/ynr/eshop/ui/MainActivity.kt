@@ -61,10 +61,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
             Log.e(TAG, "onViewCreated: $it")
 
-            homeAdapter = MainAdapter(this)
+            homeAdapter = MainAdapter(this,it)
             itemRecyclerView.adapter = homeAdapter
-
-            homeAdapter.setProducts(it)
 
 
         })

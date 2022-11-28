@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ynr.eshop.R
 import com.ynr.eshop.adapter.CartAdapter
+import com.ynr.eshop.database.Product
+import com.ynr.eshop.util.OnClickItem
 import com.ynr.eshop.viewmodel.CartViewModel
 
-class CartActivity : AppCompatActivity() {
+class CartActivity : AppCompatActivity(),OnClickItem {
 
     private lateinit var cartRV : RecyclerView
     lateinit var cartAdapter : CartAdapter
@@ -38,15 +40,13 @@ class CartActivity : AppCompatActivity() {
         cartViewModel = ViewModelProvider(this)[CartViewModel::class.java]
 
 
-        cartViewModel.allProduct.observe(this, Observer {
+        cartViewModel.getAllProduct().observe(this, Observer {
             Log.e(TAG, "onCreate: ${it.size} --- $it" )
 
             if(it.isNotEmpty()){
 
-                cartAdapter = CartAdapter(this,it)
+                cartAdapter = CartAdapter(this,it,this)
                 cartRV.adapter = cartAdapter
-
-                cartAdapter.setProduct(this,it)
 
             }
         })
@@ -59,4 +59,11 @@ class CartActivity : AppCompatActivity() {
 */
 
     }
+
+    override fun onClick(product: Product) {
+
+        Log.e(TAG, "onClick:  ${product.price} --- ${product.id} ")
+
+    }
+
 }

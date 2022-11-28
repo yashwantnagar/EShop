@@ -1,18 +1,17 @@
 package com.ynr.eshop.ui
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.ynr.eshop.R
 import com.ynr.eshop.database.Product
-import com.ynr.eshop.model.AllProduct
 import com.ynr.eshop.viewmodel.CartViewModel
 
 class ProductDetailActivity : AppCompatActivity() {
@@ -33,6 +32,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private lateinit var cartViewModel : CartViewModel
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
@@ -78,6 +78,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
 
         addToCartBtn.setOnClickListener(View.OnClickListener {
+
 
             cartViewModel.insertProduct(Product(
                 id,title,price,description,category,image,rate,count

@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ynr.eshop.R
-import com.ynr.eshop.adapter.MainAdapter
 import com.ynr.eshop.adapter.SearchAdapter
 
 class SearchActivity : AppCompatActivity() {
