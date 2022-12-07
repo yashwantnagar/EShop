@@ -109,7 +109,7 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:visibility="gone"
+        android:visibility="visible"
         android:progressTint="@color/blue"
         android:indeterminate="true"
         android:indeterminateTint="@color/blue"

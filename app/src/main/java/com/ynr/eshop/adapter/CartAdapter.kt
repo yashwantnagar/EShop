@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 import com.ynr.eshop.R
 import com.ynr.eshop.database.Product
-import com.ynr.eshop.util.OnClickItem
 import com.ynr.eshop.viewmodel.CartViewModel
 
 class CartAdapter(
@@ -41,6 +40,36 @@ class CartAdapter(
         holder.productTitle.text = product.title
         holder.productPrice.text = product.price.toString() + " USD "
         holder.productQuantity.text = "1"
+
+        holder.addBtn.setOnClickListener(View.OnClickListener {
+
+            var count : Int = (holder.productQuantity.text as String).toInt()
+
+            if(count < 5){
+
+                count++
+                holder.productQuantity.text = count.toString()
+
+            } else {
+
+                holder.productQuantity.text = count.toString()
+
+            }
+
+
+        })
+
+        holder.removeBtn.setOnClickListener {
+
+            var count: Int = (holder.productQuantity.text as String).toInt()
+            if (count == 1) {
+                holder.productQuantity.text = "1"
+            } else {
+                count -= 1
+                holder.productQuantity.text = "" + count
+            }
+
+        }
 
         holder.productCard.setOnClickListener(View.OnClickListener {
 

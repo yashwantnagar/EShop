@@ -6,7 +6,7 @@ import com.ynr.eshop.model.AllProduct
 import com.ynr.eshop.repository.HomeRepository
 import kotlinx.coroutines.*
 
-class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
+class HomeViewModel(private val homeRepository : HomeRepository) : ViewModel() {
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage get() = _errorMessage
